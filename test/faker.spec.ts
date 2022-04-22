@@ -8,17 +8,6 @@ describe('faker', () => {
     faker.locale = 'en';
   });
 
-  it('should be possible to access the seed', () => {
-    const myFaker = new Faker({
-      locale: 'en',
-      localeFallback: 'en',
-      locales: { en: { title: 'MyStuff' } },
-    });
-
-    expect(myFaker.seedValue).toBeDefined();
-    expect(myFaker.seedValue).toBeTypeOf('number');
-  });
-
   it('should throw error if no options passed', () => {
     expect(
       () =>

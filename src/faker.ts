@@ -201,13 +201,35 @@ export class Faker {
    */
   seed(seed?: number): number;
   /**
-   * Sets the seed or generates a new one.
+   * Sets the seed array.
    *
    * Please note that generated values are dependent on both the seed and the
    * number of calls that have been made since it was set.
    *
+   * This method is intended to allow for consistent values in a tests, so you
+   * might want to use hardcoded values as the seed.
+   *
+   * In addition to that it can be used for creating truly random tests
+   * (by passing no arguments), that still can be reproduced if needed,
+   * by logging the result and explicitly setting it if needed.
+   *
    * @param seedArray The seed array to use.
    * @returns The seed array that was set.
+   *
+   * @example
+   * // Consistent values for tests:
+   * faker.seed([42, 13, 17])
+   * faker.datatype.number(10); // 4
+   * faker.datatype.number(10); // 8
+   *
+   * faker.seed([42, 13, 17])
+   * faker.datatype.number(10); // 4
+   * faker.datatype.number(10); // 8
+   *
+   * @example
+   * // Random but reproducible tests:
+   * // Simply log the seed, and if you need to reproduce it, insert the seed here
+   * console.log('Running test with seed:', faker.seed());
    */
   seed(seedArray: number[]): number[];
   seed(
