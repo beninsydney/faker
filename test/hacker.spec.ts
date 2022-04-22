@@ -118,7 +118,7 @@ describe('name', () => {
           const abbreviation = faker.hacker.abbreviation();
 
           expect(abbreviation).toBeTypeOf('string');
-          expect(abbreviation.length).greaterThan(0);
+          expect(abbreviation.length).toBeGreaterThan(0);
           expect(faker.definitions.hacker.abbreviation).toContain(abbreviation);
         });
       });
@@ -132,7 +132,7 @@ describe('name', () => {
           const adjective = faker.hacker.adjective();
 
           expect(adjective).toBeTypeOf('string');
-          expect(adjective.length).greaterThan(0);
+          expect(adjective.length).toBeGreaterThan(0);
           expect(faker.definitions.hacker.adjective).toContain(adjective);
         });
       });
@@ -146,7 +146,7 @@ describe('name', () => {
           const noun = faker.hacker.noun();
 
           expect(noun).toBeTypeOf('string');
-          expect(noun.length).greaterThan(0);
+          expect(noun.length).toBeGreaterThan(0);
           expect(faker.definitions.hacker.noun).toContain(noun);
         });
       });
@@ -160,7 +160,7 @@ describe('name', () => {
           const verb = faker.hacker.verb();
 
           expect(verb).toBeTypeOf('string');
-          expect(verb.length).greaterThan(0);
+          expect(verb.length).toBeGreaterThan(0);
           expect(faker.definitions.hacker.verb).toContain(verb);
         });
       });
@@ -174,7 +174,7 @@ describe('name', () => {
           const ingverb = faker.hacker.ingverb();
 
           expect(ingverb).toBeTypeOf('string');
-          expect(ingverb.length).greaterThan(0);
+          expect(ingverb.length).toBeGreaterThan(0);
           expect(faker.definitions.hacker.ingverb).toContain(ingverb);
         });
       });
@@ -188,7 +188,7 @@ describe('name', () => {
           const phrase = faker.hacker.phrase();
 
           expect(phrase).toBeTypeOf('string');
-          expect(phrase.length).greaterThan(0);
+          expect(phrase.length).toBeGreaterThan(0);
         });
       });
     }

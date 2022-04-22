@@ -370,12 +370,12 @@ describe('address', () => {
         it('returns random zipCode - user specified format', () => {
           let zipCode = faker.address.zipCode('?#? #?#');
 
-          expect(zipCode).match(/^[A-Za-z]\d[A-Za-z]\s\d[A-Za-z]\d$/);
+          expect(zipCode).toMatch(/^[A-Za-z]\d[A-Za-z]\s\d[A-Za-z]\d$/);
 
           // try another format
           zipCode = faker.address.zipCode('###-###');
 
-          expect(zipCode).match(/^\d{3}-\d{3}$/);
+          expect(zipCode).toMatch(/^\d{3}-\d{3}$/);
         });
 
         it('returns zipCode with proper locale format', () => {
@@ -383,7 +383,7 @@ describe('address', () => {
           faker.locale = 'en_CA';
           const zipCode = faker.address.zipCode();
 
-          expect(zipCode).match(/^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/);
+          expect(zipCode).toMatch(/^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/);
         });
       });
 
@@ -393,16 +393,16 @@ describe('address', () => {
           const states = ['IL', 'GA', 'WA'];
 
           const zipCode1 = +faker.address.zipCodeByState(states[0]);
-          expect(zipCode1).greaterThanOrEqual(60001);
-          expect(zipCode1).lessThanOrEqual(62999);
+          expect(zipCode1).toBeGreaterThanOrEqual(60001);
+          expect(zipCode1).toBeLessThanOrEqual(62999);
 
           const zipCode2 = +faker.address.zipCodeByState(states[1]);
-          expect(zipCode2).greaterThanOrEqual(30001);
-          expect(zipCode2).lessThanOrEqual(31999);
+          expect(zipCode2).toBeGreaterThanOrEqual(30001);
+          expect(zipCode2).toBeLessThanOrEqual(31999);
 
           const zipCode3 = +faker.address.zipCodeByState(states[2]);
-          expect(zipCode3).greaterThanOrEqual(98001);
-          expect(zipCode3).lessThanOrEqual(99403);
+          expect(zipCode3).toBeGreaterThanOrEqual(98001);
+          expect(zipCode3).toBeLessThanOrEqual(99403);
         });
       });
 
@@ -415,8 +415,8 @@ describe('address', () => {
 
             const latitude_float = parseFloat(latitude);
 
-            expect(latitude_float).greaterThanOrEqual(-90.0);
-            expect(latitude_float).lessThanOrEqual(90.0);
+            expect(latitude_float).toBeGreaterThanOrEqual(-90.0);
+            expect(latitude_float).toBeLessThanOrEqual(90.0);
           }
         });
 
@@ -432,8 +432,8 @@ describe('address', () => {
 
             const latitude_float = parseFloat(latitude);
 
-            expect(latitude_float).greaterThanOrEqual(-5);
-            expect(latitude_float).lessThanOrEqual(5);
+            expect(latitude_float).toBeGreaterThanOrEqual(-5);
+            expect(latitude_float).toBeLessThanOrEqual(5);
           }
         });
 
@@ -449,8 +449,8 @@ describe('address', () => {
 
             const latitude_float = parseFloat(latitude);
 
-            expect(latitude_float).greaterThanOrEqual(-180);
-            expect(latitude_float).lessThanOrEqual(180);
+            expect(latitude_float).toBeGreaterThanOrEqual(-180);
+            expect(latitude_float).toBeLessThanOrEqual(180);
           }
         });
       });
@@ -464,8 +464,8 @@ describe('address', () => {
 
             const longitude_float = parseFloat(longitude);
 
-            expect(longitude_float).greaterThanOrEqual(-180);
-            expect(longitude_float).lessThanOrEqual(180);
+            expect(longitude_float).toBeGreaterThanOrEqual(-180);
+            expect(longitude_float).toBeLessThanOrEqual(180);
           }
         });
 
@@ -481,8 +481,8 @@ describe('address', () => {
 
             const longitude_float = parseFloat(longitude);
 
-            expect(longitude_float).greaterThanOrEqual(-30);
-            expect(longitude_float).lessThanOrEqual(100);
+            expect(longitude_float).toBeGreaterThanOrEqual(-30);
+            expect(longitude_float).toBeLessThanOrEqual(100);
           }
         });
 
@@ -498,8 +498,8 @@ describe('address', () => {
 
             const longitude_float = parseFloat(longitude);
 
-            expect(longitude_float).greaterThanOrEqual(-180);
-            expect(longitude_float).lessThanOrEqual(180);
+            expect(longitude_float).toBeGreaterThanOrEqual(-180);
+            expect(longitude_float).toBeLessThanOrEqual(180);
           }
         });
       });
@@ -515,7 +515,7 @@ describe('address', () => {
             direction,
             `${prefixErrorMessage} be of type string. Current is ${typeof direction}`
           ).toBeTypeOf('string');
-          expect(lengthDirection).lessThanOrEqual(2);
+          expect(lengthDirection).toBeLessThanOrEqual(2);
         });
       });
 
@@ -531,7 +531,7 @@ describe('address', () => {
             ordinalDirection,
             `${prefixErrorMessage} be equal ${expectedType}. Current is ${typeof ordinalDirection}`
           ).toBeTypeOf(expectedType);
-          expect(ordinalDirectionLength).lessThanOrEqual(2);
+          expect(ordinalDirectionLength).toBeLessThanOrEqual(2);
         });
       });
 
@@ -547,7 +547,7 @@ describe('address', () => {
             cardinalDirection,
             `${prefixErrorMessage} be of type ${expectedType}. Current is ${typeof cardinalDirection}`
           ).toBeTypeOf(expectedType);
-          expect(cardinalDirectionLength).lessThanOrEqual(2);
+          expect(cardinalDirectionLength).toBeLessThanOrEqual(2);
         });
       });
 
@@ -595,12 +595,12 @@ describe('address', () => {
             expect(coordinate[1]).toBeTypeOf('string');
 
             const latFloat2 = parseFloat(coordinate[0]);
-            expect(latFloat2).greaterThanOrEqual(-90.0);
-            expect(latFloat2).lessThanOrEqual(90.0);
+            expect(latFloat2).toBeGreaterThanOrEqual(-90.0);
+            expect(latFloat2).toBeLessThanOrEqual(90.0);
 
             const lonFloat2 = parseFloat(coordinate[1]);
-            expect(lonFloat2).greaterThanOrEqual(-180.0);
-            expect(lonFloat2).lessThanOrEqual(180.0);
+            expect(lonFloat2).toBeGreaterThanOrEqual(-180.0);
+            expect(lonFloat2).toBeLessThanOrEqual(180.0);
 
             // Due to floating point math, and constants that are not extremely precise,
             // returned points will not be strictly within the given radius of the input
@@ -613,7 +613,7 @@ describe('address', () => {
               lonFloat2,
               isMetric
             );
-            expect(actualDistance).lessThanOrEqual(radius + error);
+            expect(actualDistance).toBeLessThanOrEqual(radius + error);
           }
         });
 
@@ -636,7 +636,7 @@ describe('address', () => {
             Math.pow(+coordinate[0] - latitude, 2) +
             Math.pow(+coordinate[1] - longitude, 2);
 
-          expect(distanceToTarget).lessThanOrEqual(
+          expect(distanceToTarget).toBeLessThanOrEqual(
             100 * 0.002 // 100 km ~= 0.9 degrees, we take 2 degrees
           );
         });
@@ -661,7 +661,7 @@ describe('address', () => {
           //   Math.pow(coordinate[1] - longitude, 2);
 
           // TODO @Shinigami92 2022-01-27: Investigate why this test sometimes fails
-          // expect(distanceToTarget).lessThanOrEqual(
+          // expect(distanceToTarget).toBeLessThanOrEqual(
           //   100 * 0.002 * 1.6093444978925633 // 100 miles to km ~= 0.9 degrees, we take 2 degrees
           // );
         });
