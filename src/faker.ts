@@ -98,12 +98,11 @@ export class Faker {
     this.locales = opts.locales;
     this.locale = opts.locale || 'en';
     this.localeFallback = opts.localeFallback || 'en';
-
-    this.seed();
   }
 
   /**
-   * The seed.
+   * The seed that was last set.
+   * Please note that generated values are dependent on both the seed and the number of calls that have been made since it was set.
    *
    * Use the `seed` function to set a new seed.
    *
@@ -170,15 +169,21 @@ export class Faker {
   }
 
   /**
-   * Setting the seed again resets the sequence.
+   * Sets the seed or generates a new one.
    *
-   * @param seed The initial seed to use. Defaults to a random number.
+   * Please note that generated values are dependent on both the seed and the number of calls that have been made since it was set.
+   *
+   * @param seed The seed to use. Defaults to a random number.
+   * @returns The seed that was set.
    */
   seed(seed?: number): number;
   /**
-   * Setting the seed again resets the sequence.
+   * Sets the seed or generates a new one.
    *
-   * @param seedArray The initial seed array to use.
+   * Please note that generated values are dependent on both the seed and the number of calls that have been made since it was set.
+   *
+   * @param seedArray The seed array to use.
+   * @returns The seed array that was set.
    */
   seed(seedArray: number[]): number[];
   seed(
